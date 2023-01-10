@@ -47,9 +47,15 @@ Or run the commands in runme.sh line by line. The commands includes:
 
 (1) Modify the paths of dataset and your workspace
 
-(2) Extract features(optional: if you have downloaded waveform.h5 from the link, you can skip this step)
+(2) Extract features
+(optional: if you have downloaded waveform.h5 from the link, you can skip this step)
 
 (3) Train model
+
+For example, you can run
+<pre>
+CUDA_VISIBLE_DEVICES=5 python3 pytorch/main.py train --dataset_dir="/data1/nys_new/audiohw/PANN/GTZAN/Data/genres_original" --workspace="/data1/nys_new/audiohw/PANN/finetune" --holdout_fold=1 --model_type="Transfer_Cnn14" --pretrained_checkpoint_path="/data1/nys_new/audiohw/PANN/Cnn14_mAP=0.431.pth" --loss_type=clip_nll --augmentation='mixup' --learning_rate=1e-4 --batch_size=32 --resume_iteration=0 --stop_iteration=10000  --cuda
+</pre>
 
 ## Model
 A 14-layer CNN of PANNs is fine-tuned. I use 10-fold cross validation for GTZAN classification following paper. That is, 900 audio clips are used for training, and 100 audio clips are used for validation.
