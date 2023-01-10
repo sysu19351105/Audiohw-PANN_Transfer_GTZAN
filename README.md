@@ -8,7 +8,7 @@ This codebase is for audio signal processing assignment.
 The code, dataset and extracted features can be downloaded from https://pan.baidu.com/s/1tiyqrAaLDOrO0A_2zotwHQ?pwd=20vz
 提取码：20vz
 
-(P.S. It seems the original dataset downloaded from kaggle has a corrupt file: jazz.00054.wav, I replace it with jazz.00053.wav, so there shoule be 2 same wav files)
+(P.S. It seems that the original dataset downloaded from kaggle has a corrupt file: jazz.00054.wav, I replace it with jazz.00053.wav, so there shoule be 2 same wav files)
 
 
 **1. Download pretrained CNN14** 
