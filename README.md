@@ -61,13 +61,28 @@ Or run the commands in runme.sh line by line. The commands includes:
 
 (3) Train model
 
-For example, you can run
+For example, to finetune CNN14, you can run
 <pre>
 CUDA_VISIBLE_DEVICES=5 python3 pytorch/main.py train --dataset_dir="/data1/nys_new/audiohw/PANN/GTZAN/Data/genres_original" --workspace="/data1/nys_new/audiohw/PANN/finetune" --holdout_fold=1 --model_type="Transfer_Cnn14" --pretrained_checkpoint_path="/data1/nys_new/audiohw/PANN/Cnn14_mAP=0.431.pth" --loss_type=clip_nll --augmentation='mixup' --learning_rate=1e-4 --batch_size=32 --resume_iteration=0 --stop_iteration=10000  --cuda
 </pre>
 
+to use pretrained CNN14 as feature extractor(Freeze_L1 in paper), you can just add --freeze_base:
+<pre>
+CUDA_VISIBLE_DEVICES=4 python3 pytorch/main.py train --dataset_dir="/data1/nys_new/audiohw/PANN/GTZAN/Data/genres_original" --workspace="/data1/nys_new/audiohw/PANN/finetune" --holdout_fold=1 --model_type="Transfer_Cnn14" --pretrained_checkpoint_path="/data1/nys_new/audiohw/PANN/Cnn14_mAP=0.431.pth" --freeze_base --loss_type=clip_nll --augmentation='mixup' --learning_rate=1e-4 --batch_size=32 --resume_iteration=0 --stop_iteration=10000 --cuda
+</pre>
+
+to use pretrained CNN14 as feature extractor(Freeze_L3 in paper), you can add --freeze_base, --layer_num 3:
+<pre>
+CUDA_VISIBLE_DEVICES=0 python3 pytorch/main.py train --dataset_dir="/data1/nys_new/audiohw/PANN/GTZAN/Data/genres_original" --workspace="/data1/nys_new/audiohw/PANN/finetune" --holdout_fold=1 --model_type="Transfer_Cnn14" --pretrained_checkpoint_path="/data1/nys_new/audiohw/PANN/Cnn14_mAP=0.431.pth" --loss_type=clip_nll --augmentation='mixup' --learning_rate=1e-4 --batch_size=32 --resume_iteration=0 --stop_iteration=10000 --freeze_base --layer_num 3 --cuda
+</pre>
+
+to train CNN14 from scratch, use --model_type="Cnn14" --train_from_scratch:
+<pre>
+CUDA_VISIBLE_DEVICES=7 python3 pytorch/main.py train --dataset_dir="/data1/nys_new/audiohw/PANN/GTZAN/Data/genres_original" --workspace="/data1/nys_new/audiohw/PANN/finetune" --holdout_fold=1 --model_type="Cnn14" --pretrained_checkpoint_path="" --train_from_scratch --loss_type=clip_nll --augmentation='mixup' --learning_rate=1e-4 --batch_size=32 --resume_iteration=0 --stop_iteration=10000 --cuda
+</pre>
+
 ## Model
-A 14-layer CNN of PANNs is fine-tuned. I use 10-fold cross validation for GTZAN classification following paper. That is, 900 audio clips are used for training, and 100 audio clips are used for validation.
+I use 10-fold cross validation for GTZAN classification following paper. That is, 900 audio clips are used for training, and 100 audio clips are used for validation.
 
 ## Results
 TODO
