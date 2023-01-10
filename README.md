@@ -42,6 +42,7 @@ dataset_root
 
 <pre>
 git clone https://github.com/sysu19351105/Audiohw-PANN_Transfer_GTZAN.git
+cd Audiohw-PANN_Transfer_GTZAN
 conda create --name audiohw python=3.7
 pip install torch==1.7.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
