@@ -8,7 +8,7 @@ This codebase is for audio signal processing assignment.
 The code, dataset and extracted features can be downloaded from https://pan.baidu.com/s/1tiyqrAaLDOrO0A_2zotwHQ?pwd=20vz
 提取码：20vz
 
-(P.S. It seems that the original dataset downloaded from kaggle has a corrupt file: jazz.00054.wav, I replace it with jazz.00053.wav, so there shoule be 2 same wav files)
+(P.S. It seems the original dataset downloaded from kaggle has a corrupt file: jazz.00054.wav, I replace it with jazz.00053.wav, so there shoule be 2 same wav files)
 
 
 **1. Download pretrained CNN14** 
@@ -42,7 +42,6 @@ dataset_root
 
 <pre>
 git clone https://github.com/sysu19351105/Audiohw-PANN_Transfer_GTZAN.git
-cd Audiohw-PANN_Transfer_GTZAN
 conda create --name audiohw python=3.7
 pip install torch==1.7.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
@@ -84,9 +83,6 @@ CUDA_VISIBLE_DEVICES=7 python3 pytorch/main.py train --dataset_dir="/data1/nys_n
 
 ## Model
 I use 10-fold cross validation for GTZAN classification following paper. That is, 900 audio clips are used for training, and 100 audio clips are used for validation.
-
-## Results
-TODO
 
 
 ## Citation
